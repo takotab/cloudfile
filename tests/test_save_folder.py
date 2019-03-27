@@ -11,7 +11,9 @@ def test_make_cloudfile():
     del_folder("foo")
 
     ini_files({"foo": ["bar.txt", {"foo2": "bar2.txt"}]})
-    cloudfile.save("foo")
+    cloudfile.save(
+        "foo",
+    )
 
     assert os.path.isfile(".cloudfile")
     os.remove(".cloudfile")
