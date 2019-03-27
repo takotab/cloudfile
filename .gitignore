@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 .vscode/settings.json
 token.pickle
+cloudfile_api_credentials.json
