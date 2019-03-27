@@ -18,6 +18,6 @@ class CloudFile(object):
         assert os.path.isfile(file)
         path = os.path.normpath(file)
         file = path.split(os.sep)[-1]
-        path = os.path.join(path.split(os.sep)[:-1])
+        path = os.path.join(*path.split(os.sep)[:-1])
         self.dct[path] = file
         self.save_json()
