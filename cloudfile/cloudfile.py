@@ -3,8 +3,8 @@ import json
 
 
 class CloudFile(object):
-    def __init__(self, clouldfile=".cloudfile", unit_test_link_dct=None):
-        self._cloudfile = ".cloudfile"
+    def __init__(self, clouldfile="cloudfile.json", unit_test_link_dct=None):
+        self._cloudfile = clouldfile
         if os.path.isfile(self._cloudfile):
             self.dct = json.load(open(clouldfile, "r"))
         else:
@@ -21,3 +21,6 @@ class CloudFile(object):
 
     def items(self) -> [(str, str)]:
         return self.dct.items()
+
+    def __getitem__(self, item):
+        return self.dct[item]

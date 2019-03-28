@@ -105,3 +105,6 @@ venv.bak/
 .vscode/settings.json
 token.pickle
 cloudfile_api_credentials.json
+foo/*
+.vscode/spellright.dict
+cloudfile.json

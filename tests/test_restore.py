@@ -11,15 +11,19 @@ cloudfile_dct = {
 }
 
 
+def create_dct():
+    json.dump(cloudfile_dct, open("cloudfile.json", "w"))
+
+
 def test_restore():
-    if os.path.isfile(".clouldfile"):
-        os.remove(".cloudfile")
+    if os.path.isfile("clouldfile.json"):
+        os.remove("cloudfile.json")
     del_folder("foo")
 
-    json.dump(cloudfile_dct, open(".cloudfile", "w"))
+    create_dct()
     cloudfile.restore()
     assert os.path.isdir("foo")
     assert os.path.isdir("foo/foo2")
     assert os.path.isfile("foo/bar.txt")
     assert os.path.isfile("foo/foo2/bar2.txt")
-    os.remove(".cloudfile")
+    os.remove("cloudfile.json")

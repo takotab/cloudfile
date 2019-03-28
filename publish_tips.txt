@@ -1,0 +1,4 @@
+# https://realpython.com/pypi-publish-python-package/#uploading-your-package
+python setup.py sdist bdist_wheel
+twine check dist/*
+twine upload dist/*
