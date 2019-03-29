@@ -14,7 +14,7 @@ This will restore the keys with the corresponding urls in `cloudfile.json`. Add 
 
 `python -m cloudfile add_file`
 
-Uploud the file to google drive and adds the link to `cloudfile.json`. To use this option you need to install Google Client Library. This means executing `pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib`. The files will be called `cloudfile_{filename}` and by default will be accessible to anyone who has the link.
+Uploud the file to google drive and adds the link to `cloudfile.json`. To use this option you need to install Google Client Library and login to your google account. This means executing `pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib`. The files will be called `cloudfile_{filename}` and by default will be accessible to anyone who has the link.
 
 `python -m cloudfile add_link file url`
 
@@ -33,4 +33,4 @@ Download the file even if the file already exists.
 - make zip of files
 - add_folder
 - Handle larger files (<5MB)
-- Make a folder `cloudfile` 
+- Make a google drive folder `cloudfile` 
