@@ -1,11 +1,12 @@
 import pickle
 import os.path
+from googleapiclient.http import MediaFileUpload
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 # If modifying these scopes, delete the file token.pickle.
-SCOPES = ["https://www.googleapis.com/auth/drive.appdata"]
+SCOPES = ["https://www.googleapis.com/auth/drive"]
 
 
 def get_service():
@@ -37,15 +38,44 @@ def get_service():
     return build("drive", "v3", credentials=creds)  # service
 
 
-def upload_file(drive_service):
-    file_metadata = {"name": "photo.jpg"}
-    media = MediaFileUpload("files/photo.jpg", mimetype="image/jpeg")
-    file = (
+def upload_file(drive_service, file):
+    # TODO add zip functionality
+    file_metadata = {"name": "cloudfile_" + file.split(os.sep)[-1]}  # TODO parent
+    media = MediaFileUpload(file, mimetype="application/plain")
+    file = drive_service.files().create(body=file_metadata, media_body=media).execute()
+    file_id = file.get("id")
+    add_link_permision(drive_service, file_id)
+    url = (
         drive_service.files()
-        .create(body=file_metadata, media_body=media, fields="id")
-        .execute()
+        .get(fileId=file_id, fields="webContentLink")
+        .execute()["webContentLink"]
     )
-    print("File ID: %s".format(file.get("id")))
+    print(f"File ID: {file_id}, link:{url}")
+
+    return url
+
+
+def add_link_permision(drive_service, file_id):
+    def callback(request_id, response, exception):
+        if exception:
+            # Handle error
+            print(exception)
+        else:
+            print(f"Permission Id: {response.get('id')}")
+
+    batch = drive_service.new_batch_http_request(callback=callback)
+    user_permission = {
+        "type": "anyone",
+        "role": "reader",
+        "Value": "",
+        "WithLink": True,
+    }
+    batch.add(
+        drive_service.permissions().create(
+            fileId=file_id, body=user_permission, fields="id"
+        )
+    )
+    batch.execute()
 
 
 """
