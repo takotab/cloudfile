@@ -1,15 +1,23 @@
 import os
 import json
 
+from .google_drive import get_service
+
 
 class CloudFile(object):
     def __init__(self, clouldfile="cloudfile.json", unit_test_link_dct=None):
         self._cloudfile = clouldfile
+        self.service = None
         if os.path.isfile(self._cloudfile):
             self.dct = json.load(open(clouldfile, "r"))
         else:
             self.dct = {} if unit_test_link_dct is None else unit_test_link_dct
             self.save_json()
+
+    def get_service(self):
+        if self.service is None:
+            self.service = get_service()
+        return self.service()
 
     def save_json(self):
         json.dump(self.dct, open(self._cloudfile, "w"))
@@ -24,3 +32,7 @@ class CloudFile(object):
 
     def __getitem__(self, item):
         return self.dct[item]
+
+    def __setitem__(self, key, item):
+        self.dct[key] = item
+
