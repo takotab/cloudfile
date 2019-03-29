@@ -4,8 +4,11 @@ from .cloudfile import CloudFile
 from .google_drive import upload_file
 
 
-def add_file(file: str, cloudf: CloudFile = None, hard=False):
+def add_file(file: str, cloudf: CloudFile = None, hard=False, unit_test=False):
     if cloudf is None:
         cloudf = CloudFile()
     assert os.path.isfile(file)
-    return cloudf.upload_file(file)
+    url, file_id = cloudf.upload_file(file)
+    if unit_test:
+        return cloudf, url, file_id
+    return url

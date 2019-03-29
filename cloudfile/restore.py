@@ -22,7 +22,8 @@ def restore(cloudf: CloudFile = None, hard=False):
 
 def download(dir: str, url: str):
     path_to = get_path_to(dir)
-    wget.download(url, out=path_to)
+    file_dir = wget.download(url, out=path_to)
+    os.rename(src=file_dir, dst=dir)
     print(f"Downloaded {dir} from {url}")
 
 

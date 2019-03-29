@@ -37,8 +37,8 @@ class CloudFile(object):
         self.dct[key] = item
 
     def upload_file(self, file):
-        link = upload_file(self.get_service(), file)
+        link, file_id = upload_file(self.get_service(), file)
         self.dct[file] = link
         self.save_json()
-        return link
+        return link, file_id
 

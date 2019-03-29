@@ -52,7 +52,7 @@ def upload_file(drive_service, file):
     )
     print(f"File ID: {file_id}, link:{url}")
 
-    return url
+    return url, file_id
 
 
 def add_link_permision(drive_service, file_id):
@@ -76,6 +76,10 @@ def add_link_permision(drive_service, file_id):
         )
     )
     batch.execute()
+
+
+def delete_google_file(drive_service, file_id):
+    drive_service.files().delete(fileId=file_id).execute()
 
 
 """
