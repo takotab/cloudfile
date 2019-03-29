@@ -1,7 +1,7 @@
 import os
 
 from .cloudfile import CloudFile
-from .google_drive import upload_file
+from .google import upload_file
 
 
 def add_file(file: str, cloudf: CloudFile = None, hard=False, unit_test=False):

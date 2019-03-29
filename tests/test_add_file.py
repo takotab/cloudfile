@@ -1,5 +1,6 @@
 import os
 import cloudfile
+from cloudfile.google import delete_google_file
 from tests.utils import del_folder
 
 
@@ -13,6 +14,6 @@ def test_add_file():
     os.remove(filename)
     cloudfile.download(filename, url)
     assert os.path.isfile(filename)
-    cloudfile.delete_google_file(cloudf.service, file_id)
+    delete_google_file(cloudf.service, file_id)
     del_folder("foo")
 

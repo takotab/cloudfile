@@ -1,8 +1,6 @@
 import os
 import json
 
-from .google_drive import get_service, upload_file
-
 
 class CloudFile(object):
     def __init__(self, clouldfile="cloudfile.json", unit_test_link_dct=None):
@@ -15,6 +13,8 @@ class CloudFile(object):
             self.save_json()
 
     def get_service(self):
+        from .google import get_service
+
         if self.service is None:
             self.service = get_service()
         return self.service
@@ -37,6 +37,8 @@ class CloudFile(object):
         self.dct[key] = item
 
     def upload_file(self, file):
+        from .google import upload_file
+
         link, file_id = upload_file(self.get_service(), file)
         self.dct[file] = link
         self.save_json()
