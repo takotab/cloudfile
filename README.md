@@ -30,6 +30,7 @@ Delete a link from `cloudfile.json`
 Download the file even if the file already exists.
 
 # TODO
+- instructions on making api credetials
 - make zip of files
 - add_folder
 - Handle larger files (<5MB)
