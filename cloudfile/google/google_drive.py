@@ -13,7 +13,8 @@ def get_service():
     """Shows basic usage of the Drive v3 API.
     Prints the names and ids of the first 10 files the user has access to.
     """
-
+    if not os.path.isfile("credentials.json"):
+        no_api_key()
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
@@ -27,9 +28,7 @@ def get_service():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                "cloudfile_api_credentials.json", SCOPES
-            )
+            flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
             creds = flow.run_local_server()
         # Save the credentials for the next run
         with open("token.pickle", "wb") as token:
@@ -80,6 +79,15 @@ def add_link_permision(drive_service, file_id):
 
 def delete_google_file(drive_service, file_id):
     drive_service.files().delete(fileId=file_id).execute()
+
+
+def no_api_key():
+    print(
+        "Please download an api key for google drive, place it in your main folder with the name `credentials.json`"
+    )
+    FileNotFoundError(
+        "You can go to https://developers.google.com/drive/api/v3/quickstart/python and click on `Enable the Drive API`"
+    )
 
 
 """
