@@ -13,8 +13,7 @@ def get_service():
     """Shows basic usage of the Drive v3 API.
     Prints the names and ids of the first 10 files the user has access to.
     """
-    if not os.path.isfile("credentials.json"):
-        no_api_key()
+    no_api_key()
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
@@ -82,12 +81,13 @@ def delete_google_file(drive_service, file_id):
 
 
 def no_api_key():
-    print(
-        "Please download an api key for google drive, place it in your main folder with the name `credentials.json`"
-    )
-    FileNotFoundError(
-        "You can go to https://developers.google.com/drive/api/v3/quickstart/python and click on `Enable the Drive API`"
-    )
+    if not os.path.isfile("credentials.json"):
+        print(
+            "Please download an api key for google drive, place it in your main folder with the name `credentials.json`"
+        )
+        raise FileNotFoundError(
+            "File `credentials.json` not found. You can go to https://developers.google.com/drive/api/v3/quickstart/python and click on `Enable the Drive API` to make an API key."
+        )
 
 
 """
