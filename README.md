@@ -35,6 +35,7 @@ Cloudfile can upload and download (large) files to the original position.
 
     Add a file to `cloudfile.json` the location should be `file` and `link` is the download location. Please ensure it's the actual file not the share page.
     You can use: [https://syncwithtech.blogspot.com/p/direct-download-link-generator.html](https://syncwithtech.blogspot.com/p/direct-download-link-generator.html) to convert a link to the actual file.
+    Note when using this option enclose with "". Your shell will otherwise mess up the input if there are strainge tokens in there (e.g. ?).
 
 - `python -m cloudfile del_link file`
 
