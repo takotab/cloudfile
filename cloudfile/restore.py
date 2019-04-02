@@ -3,6 +3,7 @@ import json
 import wget
 
 from .cloudfile import CloudFile
+from .extract import extract
 
 
 def restore(cloudf: CloudFile = None, hard=False):
@@ -24,6 +25,7 @@ def download(dir: str, url: str):
     path_to = get_path_to(dir)
     file_dir = wget.download(url, out=path_to)
     os.rename(src=file_dir, dst=dir)
+    extract(file_dir)
     print(f"\nDownloaded {dir} from {url}")
 
 
