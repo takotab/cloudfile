@@ -11,7 +11,7 @@ def restore(cloudf: CloudFile = None, hard=False):
     for dir, url in cloudf.items():
         path_to = get_path_to(dir)
         if not os.path.isdir(path_to):
-            os.mkdir(path_to)
+            os.makedirs(path_to)
         if not os.path.isfile(dir) or hard:
             download(dir, url)
         else:

@@ -8,6 +8,7 @@ import cloudfile
 cloudfile_dct = {
     "foo/bar.txt": "https://docs.google.com/document/d/1yfcBYMKzaBsUsLmuoitqT8spXGVKiiGo9MxJ8eBjNgM/export?format=txt",
     "foo/foo2/bar2.txt": "https://docs.google.com/document/d/1KQNXOMEqzEl9D5IAyzecj_CiCphobEdaou9oNhzOZgg/export?format=txt",
+    "foo/foo1/foo_dir/bar.csv": "https://google.com",
 }
 
 
