@@ -1,5 +1,7 @@
 # __main__.py
 import os
+import sys
+import subprocess
 
 import fire
 
@@ -46,7 +48,22 @@ class MainCloudFile(object):
         url = self.cloudf[file]
         file_download(file, url)
 
+    def enable_google_drive(self):
+        """This will enable google drive uploads."""
+        import webbrowser as wb
+
+        install("google-api-python-client")
+        install("google-auth-httplib2")
+        install("google-auth-oauthlib")
+
+        wb.open_new_tab("https://developers.google.com/drive/api/v3/quickstart/python")
+        assert os.path.isfile("credentials.json")
+
     # def add(self, dir):
+
+
+def install(package):
+    subprocess.call([sys.executable, "-m", "pip", "install", "--upgrade", package])
 
 
 if __name__ == "__main__":

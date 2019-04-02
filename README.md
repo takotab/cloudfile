@@ -8,9 +8,9 @@ Cloudfile can upload and download (large) files to the original position.
 - `pip install cloudfile`
 - If you only want to use cloudfile to restore you are done. 
 - To also upload you need to install Google Client Library, make an API key, and login to your google account. This means executing:
-  -  `pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib`.
-  - Please go to https://developers.google.com/drive/api/v3/quickstart/python
-  - click on `Enable the Drive API` to make an API key. Save the file in the root directory as `credentials.json`.
+  -  `python -m cloudfile enable_google_drive`
+  - This will install the Google Client Library and open https://developers.google.com/drive/api/v3/quickstart/python
+  - On site, click on `Enable the Drive API` to make an API key. Save the file in the root directory as `credentials.json`.
 
 # Usage
 - `python -m cloudfile restore`
