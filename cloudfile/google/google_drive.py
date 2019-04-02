@@ -1,9 +1,13 @@
 import pickle
 import os.path
-from googleapiclient.http import MediaFileUpload
-from googleapiclient.discovery import build
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
+
+try:
+    from googleapiclient.http import MediaFileUpload
+    from googleapiclient.discovery import build
+    from google_auth_oauthlib.flow import InstalledAppFlow
+    from google.auth.transport.requests import Request
+except:
+    pass
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ["https://www.googleapis.com/auth/drive"]
@@ -80,11 +84,12 @@ def delete_google_file(drive_service, file_id):
     drive_service.files().delete(fileId=file_id).execute()
 
 
-def no_api_key():
+def no_api_key(raise_error=True):
     if not os.path.isfile("credentials.json"):
         print(
             "Please download an api key for google drive, place it in your main folder with the name `credentials.json`"
         )
+
         raise FileNotFoundError(
             "File `credentials.json` not found. You can go to https://developers.google.com/drive/api/v3/quickstart/python and click on `Enable the Drive API` to make an API key."
         )

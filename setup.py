@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="cloudfile",
-    version="0.1.1",
+    version="0.2.02",
     description="Upload and restore large files in the intented location.",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -24,8 +24,8 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=["cloudfile"],
+    packages=["cloudfile", "cloudfile/google"],
     include_package_data=True,
-    install_requires=[],
+    install_requires=["wget", "fire"],
     entry_points={"console_scripts": ["realpython=reader.__main__:main"]},
 )

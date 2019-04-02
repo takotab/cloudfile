@@ -28,4 +28,7 @@ def download(dir: str, url: str):
 
 
 def get_path_to(path: str):
-    return os.path.join(*path.split(os.sep)[:-1])
+    splitted = path.split(os.sep)
+    if len(splitted) == 1:
+        return "."
+    return os.path.join(*splitted[:-1])

@@ -10,6 +10,7 @@ from .restore import restore, download as file_download
 from .cloudfile import CloudFile
 from .add_file import add_file as google_add_file
 from .add_file import add as google_add
+from .google import get_service
 
 
 class MainCloudFile(object):
@@ -48,16 +49,21 @@ class MainCloudFile(object):
         url = self.cloudf[file]
         file_download(file, url)
 
-    def enable_google_drive(self):
+    def enable_google_api(self):
         """This will enable google drive uploads."""
         import webbrowser as wb
 
         install("google-api-python-client")
         install("google-auth-httplib2")
         install("google-auth-oauthlib")
+        if not os.path.isfile("credentials.json"):
+            wb.open_new_tab(
+                "https://developers.google.com/drive/api/v3/quickstart/python"
+            )
 
-        wb.open_new_tab("https://developers.google.com/drive/api/v3/quickstart/python")
+    def enable_google_drive(self):
         assert os.path.isfile("credentials.json")
+        get_service()
 
     # def add(self, dir):
 

@@ -17,3 +17,15 @@ def test_add_file():
     delete_google_file(cloudf.service, file_id)
     del_folder("foo")
 
+
+def test_add_file_wo_folder():
+    filename = "foobar.txt"
+    with open(filename, "w") as f:
+        f.write("hello world")
+    cloudf, url, file_id = cloudfile.add_file(filename, unit_test=True)
+    os.remove(filename)
+    cloudfile.download(filename, url)
+    assert os.path.isfile(filename)
+    delete_google_file(cloudf.service, file_id)
+    os.remove(filename)
+
