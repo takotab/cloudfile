@@ -7,6 +7,7 @@ from .ask_confermation import query_yes_no
 from .restore import restore, download as file_download
 from .cloudfile import CloudFile
 from .add_file import add_file as google_add_file
+from .add_file import add as google_add
 
 
 class MainCloudFile(object):
@@ -20,6 +21,10 @@ class MainCloudFile(object):
     def add_file(self, file, hard=False):
         """Uploud the file to google drive and adds the link to `cloudfile.json`"""
         google_add_file(file, self.cloudf, hard=hard)
+
+    def add(self, dir, hard=False):
+        """Uploud file or the content of the folder to google drive and adds the link to `cloudfile.json`"""
+        google_add(dir, self.cloudf, hard=hard)
 
     def add_link(self, file, link):
         """Add a link to `cloudfile.json`"""

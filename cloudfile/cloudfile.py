@@ -36,7 +36,12 @@ class CloudFile(object):
     def __setitem__(self, key, item):
         self.dct[key] = item
 
-    def upload_file(self, file):
+    def upload_file(self, file, hard=False):
+        if file in self.dct and not hard:
+            print(
+                f"Did not upload {file}. File already exist.\nRun `cloudfile add_file {dir} --hard=True` to download this file anyway."
+            )
+            return None, None
         from .google import upload_file
 
         link, file_id = upload_file(self.get_service(), file)

@@ -3,6 +3,7 @@ import os
 
 
 def ini_files(folders: dict, root: str = ""):
+    del_folder(list(folders.keys())[0])
     for key, item in folders.items():
         os.mkdir(os.path.join(root, key))
         curr_root = os.path.join(root, key)
