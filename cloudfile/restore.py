@@ -24,7 +24,7 @@ def download(dir: str, url: str):
     path_to = get_path_to(dir)
     file_dir = wget.download(url, out=path_to)
     os.rename(src=file_dir, dst=dir)
-    print(f"Downloaded {dir} from {url}")
+    print(f"\nDownloaded {dir} from {url}")
 
 
 def get_path_to(path: str):
