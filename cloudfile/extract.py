@@ -10,9 +10,13 @@ def extract(file: str):
 
 
 def in_subfolder(file):
+
     spllitted = file.split(os.sep)[:-1]
+    if len(spllitted) == 0:
+        return False
     if len(spllitted) > 1:
         return True
+
     if spllitted != ["."]:
         return True
     return False
