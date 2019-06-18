@@ -109,3 +109,4 @@ foo/*
 .vscode/spellright.dict
 cloudfile.json
 credentials.json
+XDG_CACHE_HOME/*

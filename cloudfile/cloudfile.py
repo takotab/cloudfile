@@ -49,3 +49,5 @@ class CloudFile(object):
         self.save_json()
         return link, file_id
 
+    def keys(self):
+        return list(self.dct.keys())

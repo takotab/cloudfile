@@ -6,19 +6,28 @@ from .cloudfile import CloudFile
 from .extract import extract
 
 
+def restore_file(file: str, cloudf: CloudFile = None, hard=False):
+    if cloudf is None:
+        cloudf = CloudFile()
+    url = cloudf[file]
+
+    path_to = get_path_to(file)
+    if not os.path.isdir(path_to):
+        os.makedirs(path_to)
+    if not os.path.isfile(file) or hard:
+        download(file, url)
+    else:
+        print(
+            f"Did not download {file}. File already exist.\nRun `cloudfile download {dir}` to download this file anyway."
+        )
+
+
 def restore(cloudf: CloudFile = None, hard=False):
     if cloudf is None:
         cloudf = CloudFile()
-    for dir, url in cloudf.items():
-        path_to = get_path_to(dir)
-        if not os.path.isdir(path_to):
-            os.makedirs(path_to)
-        if not os.path.isfile(dir) or hard:
-            download(dir, url)
-        else:
-            print(
-                f"Did not download {dir}. File already exist.\nRun `cloudfile download {dir}` to download this file anyway."
-            )
+    for file in cloudf.keys():
+        print(file)
+        restore_file(file, cloudf, hard)
 
 
 def download(dir: str, url: str):

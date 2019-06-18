@@ -1,3 +1,4 @@
+import os
 from cloudfile.__main__ import MainCloudFile
 from tests.test_restore import create_dct
 
@@ -10,6 +11,14 @@ def test_main(monkeypatch):
     cfile = MainCloudFile()
     cfile.restore()
     cfile.download("foo/bar.txt")
+    os.remove("foo/bar.txt")
+
+
+def test_restore_file(monkeypatch):
+    create_dct()
+    cfile = MainCloudFile()
+    cfile.restore_file("foo/bar.txt")
+    os.remove("foo/bar.txt")
 
 
 def test_main_add_file_del(monkeypatch):

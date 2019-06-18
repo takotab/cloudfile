@@ -6,7 +6,7 @@ import subprocess
 import fire
 
 from .ask_confermation import query_yes_no
-from .restore import restore, download as file_download
+from .restore import restore, restore_file, download as file_download
 from .cloudfile import CloudFile
 from .add_file import add_file as google_add_file
 from .add_file import add as google_add
@@ -20,6 +20,10 @@ class MainCloudFile(object):
     def restore(self, hard=False):
         """This will restore the keys with the corresponding urls in `cloudfile.json`"""
         restore(self.cloudf, hard)
+
+    def restore_file(self, file, hard=False):
+        """This will restore the keys with the corresponding urls in `cloudfile.json`"""
+        restore_file(file, self.cloudf, hard)
 
     def add_file(self, file, hard=False):
         """Uploud the file to google drive and adds the link to `cloudfile.json`"""
