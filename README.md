@@ -29,6 +29,7 @@ Cloudfile can upload and download (large) files to the original position.
     This will restore the specified file from the corresponding urls in `cloudfile.json`. Add `--hard=True` to download all file even if they already exist.
 
 - `python -m cloudfile add folder`
+  
     Uplouds file or the content of the folder to google drive and adds the link to `cloudfile.json`. 
 
 - `python -m cloudfile add_file file`
