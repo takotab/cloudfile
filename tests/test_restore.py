@@ -28,3 +28,15 @@ def test_restore():
     assert os.path.isfile("foo/bar.txt")
     assert os.path.isfile("foo/foo2/bar2.txt")
     os.remove("cloudfile.json")
+
+
+def test_restore_file():
+    if os.path.isfile("clouldfile.json"):
+        os.remove("cloudfile.json")
+    del_folder("foo")
+
+    create_dct()
+    cloudfile.restore_file("foo/bar.txt")
+    assert os.path.isdir("foo")
+    assert os.path.isfile("foo/bar.txt")
+    os.remove("cloudfile.json")
