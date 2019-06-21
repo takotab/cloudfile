@@ -17,13 +17,13 @@ class MainCloudFile(object):
     def __init__(self,):
         self.cloudf = CloudFile()
 
-    def restore(self, hard=False):
+    def restore(self, hard=False, **kwargs):
         """This will restore the keys with the corresponding urls in `cloudfile.json`"""
-        restore(self.cloudf, hard)
+        restore(self.cloudf, hard, **kwargs)
 
-    def restore_file(self, file, hard=False):
+    def restore_file(self, file, **kwargs):
         """This will restore the keys with the corresponding urls in `cloudfile.json`"""
-        restore_file(file, self.cloudf, hard)
+        restore_file(file, self.cloudf, **kwargs)
 
     def add_file(self, file, hard=False):
         """Uploud the file to google drive and adds the link to `cloudfile.json`"""
