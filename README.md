@@ -2,7 +2,13 @@
 Cloudfile can upload and download (large) files to the original position.
 
 
-[![codecov](https://codecov.io/gh/takotab/cloudfile/branch/master/graph/badge.svg)](https://codecov.io/gh/takotab/cloudfile) [![Downloads](https://pepy.tech/badge/cloudfile)](https://pepy.tech/project/cloudfile)
+<p align="center">
+
+<a href="https://codecov.io/gh/takotab/cloudfile"><img alt="CodeCov" src="https://codecov.io/gh/takotab/cloudfile/branch/master/graph/badge.svg"></a>
+<a href="https://github.com/python/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+</p>
+
+[![]()](https://codecov.io/gh/takotab/cloudfile) [![Downloads](https://pepy.tech/badge/cloudfile)](https://pepy.tech/project/cloudfile)
 
 # Installation
 - `pip install cloudfile`
