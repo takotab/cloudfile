@@ -24,12 +24,12 @@ def restore_file(file: str, cloudf: CloudFile = None, hard=False, verbose=True):
         )
 
 
-def restore(cloudf: CloudFile = None, hard=False):
+def restore(cloudf: CloudFile = None, hard=False, verbose=True):
     if cloudf is None:
         cloudf = CloudFile()
     for file in cloudf.keys():
         print(file)
-        restore_file(file, cloudf, hard)
+        restore_file(file, cloudf, hard, verbose)
 
 
 def download(dir: str, url: str, verbose: bool = True):
