@@ -2,8 +2,9 @@
 Cloudfile can upload and download (large) files to the original position.
 
 
-[![codecov](https://codecov.io/gh/takotab/cloudfile/branch/master/graph/badge.svg)](https://codecov.io/gh/takotab/cloudfile) [![Downloads](https://pepy.tech/badge/cloudfile)](https://pepy.tech/project/cloudfile)
-
+[![codecov](https://codecov.io/gh/takotab/cloudfile/branch/master/graph/badge.svg)](https://codecov.io/gh/takotab/cloudfile)
+[![Downloads](https://pepy.tech/badge/cloudfile)](https://pepy.tech/project/cloudfile)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://black.readthedocs.io/en/stable/the_black_code_style.html)
 # Installation
 - `pip install cloudfile`
 - If you only want to use cloudfile to restore you are done. 
