@@ -28,7 +28,7 @@ pytest==4.3.1
 pytest-cov==2.6.1
 pytest-cover==3.0.0
 pytest-coverage==0.0
-requests==2.21.0
+requests==2.31.0
 requests-oauthlib==1.2.0
 rsa==4.7
 six==1.12.0
